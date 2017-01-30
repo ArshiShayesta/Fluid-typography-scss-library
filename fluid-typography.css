@@ -1,0 +1,62 @@
+/*px based fluid typography*/
+/*these values can be changed as per developer's design*/
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+  margin-bottom: 0; }
+
+/*setting minimum size below which you do not want the font-size to further decrease*/
+@media only screen and (max-width: 320px) {
+  h1 {
+    font-size: 32px; }
+  h2 {
+    font-size: 26px; }
+  h3 {
+    font-size: 22px; }
+  h4 {
+    font-size: 18px; }
+  p {
+    font-size: 14px; }
+  .custom1 {
+    font-size: 20px; }
+  .custom2 {
+    font-size: 20px; } }
+
+/*the fluid range within which the font-size changes gradually*/
+/*font-size:calc(min-font-size + (max-font-size - min-font-size)*(100vw - min-screen-size)/(max-screen-size - min-screen-size));*/
+@media only screen and (min-width: 320px) and (max-width: 1366px) {
+  h1 {
+    font-size: calc(32px + (48 - 32) * (100vw - 320px) / (1366 - 320)); }
+  h2 {
+    font-size: calc(26px + (36 - 26) * (100vw - 320px) / (1366 - 320)); }
+  h3 {
+    font-size: calc(22px + (28 - 22) * (100vw - 320px) / (1366 - 320)); }
+  h4 {
+    font-size: calc(18px + (27 - 18) * (100vw - 320px) / (1366 - 320)); }
+  p {
+    font-size: calc(14px + (16 - 14) * (100vw - 320px) / (1366 - 320)); }
+  .custom1 {
+    font-size: calc(20px + (72 - 20) * (100vw - 320px) / (1366 - 320)); }
+  .custom2 {
+    font-size: calc(20px + (24 - 20) * (100vw - 320px) / (1366 - 320)); } }
+
+/*setting maximum size above which you do not want the font-size to further increase*/
+@media only screen and (min-width: 1366px) {
+  h1 {
+    font-size: 48px; }
+  h2 {
+    font-size: 36px; }
+  h3 {
+    font-size: 28px; }
+  h4 {
+    font-size: 27px; }
+  p {
+    font-size: 16px; }
+  .custom1 {
+    font-size: 72px; }
+  .custom2 {
+    font-size: 24px; } }

@@ -1,0 +1,78 @@
+/*px based fluid typography*/
+/*these values can be changed as per developer's design*/
+/*specify all the values without unit(px,em) so that calc operaton can be performed easily,
+units are mentioned in formula wherever required*/
+$screenmin: 320;
+$screenmax: 1366;
+$screendiff: #{$screenmax} - #{$screenmin};
+$currentscreen: 100vw - #{$screenmin}px;
+$h1min: 32;
+$h1max: 48;
+$h2min: 26;
+$h2max: 36;
+$h3min: 22;
+$h3max: 28;
+$h4min: 18;
+$h4max: 27;
+$pmin: 14;
+$pmax: 16;
+$custom1min: 20;
+$custom1max: 72;
+$custom2min: 20;
+$custom2max: 24;
+
+h1,
+h2,
+h3,
+h4,
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/*setting minimum size below which you do not want the font-size to further decrease*/
+@media only screen and (max-width:#{$screenmin}px)
+{
+  h1{ font-size: #{$h1min}px;}
+  h2{ font-size: #{$h2min}px;}
+  h3{font-size: #{$h3min}px;}
+  h4{font-size: #{$h4min}px;}
+  p{font-size: #{$pmin}px;}
+  .custom1{font-size: #{$custom1min}px;}
+  .custom2{font-size: #{$custom2min}px;}
+}
+/*the fluid range within which the font-size changes gradually*/
+/*font-size:calc(min-font-size + (max-font-size - min-font-size)*(100vw - min-screen-size)/(max-screen-size - min-screen-size));*/
+@media only screen and (min-width:#{$screenmin}px) and (max-width:#{$screenmax}px) {
+    h1 {
+        font-size: calc(#{$h1min}px + (#{$h1max} - #{$h1min}) * (#{$currentscreen}) / (#{$screendiff}));
+    }
+    h2 {
+        font-size: calc(#{$h2min}px + (#{$h2max} - #{$h2min}) * (#{$currentscreen}) / (#{$screendiff}));
+    }
+    h3 {
+        font-size: calc(#{$h3min}px + (#{$h3max} - #{$h3min}) * (#{$currentscreen}) / (#{$screendiff}));
+    }
+    h4 {
+        font-size: calc(#{$h4min}px + (#{$h4max} - #{$h4min}) * (#{$currentscreen}) / (#{$screendiff}));
+    }
+    p {
+        font-size: calc(#{$pmin}px + (#{$pmax} - #{$pmin}) * (#{$currentscreen}) / (#{$screendiff}));
+    }
+    .custom1 {
+        font-size: calc(#{$custom1min}px + (#{$custom1max} - #{$custom1min}) * (#{$currentscreen}) / (#{$screendiff}));
+    }
+    .custom2 {
+        font-size: calc(#{$custom2min}px + (#{$custom2max} - #{$custom2min}) * (#{$currentscreen}) / (#{$screendiff}));
+    }
+}
+/*setting maximum size above which you do not want the font-size to further increase*/
+@media only screen and (min-width:#{$screenmax}px)
+{
+  h1{ font-size: #{$h1max}px;}
+  h2{ font-size: #{$h2max}px;}
+  h3{font-size: #{$h3max}px;}
+  h4{font-size: #{$h4max}px;}
+  p{font-size: #{$pmax}px;}
+  .custom1{font-size: #{$custom1max}px;}
+  .custom2{font-size: #{$custom2max}px;}
+}
